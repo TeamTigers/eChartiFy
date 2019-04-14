@@ -1,0 +1,312 @@
+<div class="container-fluid">
+    <div class="row">
+        <!-- column -->
+        <!-- Pie Chart -->
+        <div class="col s12 l8">
+            <div class="card">
+                <div class="card-content">
+                    <h4 class="card-title">Pie Chart Election</h4>
+                    <div>
+                        <canvas id="chart3" height="150"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col s4">
+           <div class="">
+                <div class="card">
+                    <img class="card-img-top responsive-img" src="~/img/img_votingline4.jpg" alt="Card image cap">
+                    <div class="card-content">
+                        <div class="d-flex no-block align-items-center m-b-15 red-text">
+                            <i class="material-icons red-text">assignment</i>&nbsp;&nbsp;Chart Report
+                        </div>
+                        <h6 style="text-align: justify;" id="pieChartReport"></h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+
+
+
+        <!-- bar chart-->
+
+        <div class="row">
+           
+         <div class="col s12 l8">
+            <div class="card">
+                <div class="card-content">
+                    <h4 class="card-title">Bar Chart</h4>
+                    <div>
+                        <canvas id="chart2" height="150"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col s4">
+           <div class="">
+                <div class="card">
+                    <img class="card-img-top responsive-img" src="~/img/img_votingline3.jpg" alt="Card image cap">
+                    <div class="card-content">
+                        <div class="d-flex no-block align-items-center m-b-15 red-text">
+                            <i class="material-icons red-text">assignment</i>&nbsp;&nbsp;Chart Report
+                        </div><br>
+                        <h6 style="text-align: justify;" id="showBarChartReport"></h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        </div>
+
+
+        <!-- column -->
+        <!-- column -->
+        <div class="row">
+            <div class="col s12 l8">
+            <div class="card">
+                <div class="card-content">
+                    <h4 class="card-title">Bar Chart Horizontal</h4>
+                    <div>
+                        <canvas id="chart4" height="150"> </canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+       <div class="col s4">
+           <div class="">
+                <div class="card">
+                    <img class="card-img-top responsive-img" src="~/img/img_votingline5.jpg" alt="Card image cap">
+                    <div class="card-content">
+                        <div class="d-flex no-block align-items-center m-b-15 red-text">
+                            <i class="material-icons red-text">assignment</i>&nbsp;&nbsp;Chart Report
+                        </div>
+                        <h6 style="text-align: justify;" id="showHorizontalBarChart"></h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        <!-- column -->
+        <!-- column -->
+    </div>
+</div>
+
+
+<environment exclude="Development">
+        <script>
+        var data = @Html.Raw(Json.Serialize(Model));
+            keys = ['year', 'constituency_Number', 'district', 'constituency', 'latitude', 'longitude', 'registered_Voters', 'validVotes', 'voter_TurnOut_Percentage', 'winner', 'runnerUp', 'winnerVotes', 'runnerUpVotes', 'marginVotes', 'marginPercentage', 'magnitude' ],
+                collection = data.reduce((r, o) => {
+                    keys.forEach(k => r[k].push(o[k]));
+                    return r;
+                }, Object.assign(...keys.map(k => ({ [k]: [] })))),
+                { year, constituency_Number, district, constituency, latitude, longitude, registered_Voters, validVotes, voter_TurnOut_Percentage, winner, runnerUp, winnerVotes, runnerUpVotes, marginVotes, marginPercentage, magnitude} = collection;
+
+
+        </script>
+
+    <script>
+        function getWinnerVotes(winnerString) {
+            var votes = 0;
+            for (i = 0; i < winner.length; i++) {
+                if (winner[i] == winnerString) {
+                    votes = votes + winnerVotes[i];
+                }
+            }
+            return votes;
+        }
+    </script>
+    <script>
+        function getRunnerUpVotes(runnerUpString) {
+            var votes = 0;
+            for (i = 0; i < runnerUpVotes.length; i++) {
+                if (runnerUp[i] == runnerUpString) {
+                    votes = votes + runnerUpVotes[i];
+                }
+            }
+            return votes;
+        }
+    </script>
+
+    <script>
+
+        $(document).ready(function () {
+
+
+            // ************** Bar Chart Data ********************
+
+            var bar_chart_label = Array.from(new Set(winner)); // distinct winner
+            var bar_chart_winner_votes = [];
+            // count total votes for each winner
+            for (j = 0; j < bar_chart_label.length; j++) {
+                bar_chart_winner_votes.push(getWinnerVotes(bar_chart_label[j]));
+            }
+
+            // Sorting Start
+            var list = [];
+            for (var j = 0; j < bar_chart_label.length; j++)
+                list.push({ 'param1': bar_chart_label[j], 'param2': bar_chart_winner_votes[j] });
+            list.sort(function (a, b) {
+                return ((a.param2 > b.param2) ? -1 : ((a.param2 == b.param2) ? 0 : 1));
+            });
+            for (var k = 0; k < list.length; k++) {
+                bar_chart_label[k] = list[k].param1;
+                bar_chart_winner_votes[k] = list[k].param2;
+            }
+            // Sorting End
+
+            // Bar Chart Report
+            document.getElementById("showBarChartReport").innerHTML = "<b>" + "This bar chart represents votes of winners of each party in Bangladesh's all national elections. <br><br> For example, " + bar_chart_label[0] + " Party's Winners have got Highest Votes : " + bar_chart_winner_votes[0] 
+                + " in all national elections of Bangladesh. </b>";
+
+
+
+
+            // ************** Pie Chart Data ********************
+
+
+            var pieChartLabel = bar_chart_label;
+            var pie_chart_runnerup_votes = [];
+            var pie_chart_winner_votes = bar_chart_winner_votes;
+
+            var totalVotesOfEachParty = [];
+            // count total votes for each runnerUp
+            for (j = 0; j < pieChartLabel.length; j++) {
+                pie_chart_runnerup_votes.push(getRunnerUpVotes(pieChartLabel[j]));
+            }
+            // Sum Winner and Runner Up votes
+            for (x = 0; x < pieChartLabel.length; x++) {
+                totalVotesOfEachParty.push(pie_chart_winner_votes[x] + pie_chart_runnerup_votes[x]);
+            }
+
+            document.getElementById("pieChartReport").innerHTML = "<b>" +"This is a pie chart which shows that total votes of each party as winner and runner up in all the National Elections Of Bangladesh. <br><br><br> For Example "
+                +pieChartLabel[0]+" party has got "+ totalVotesOfEachParty[0] + " votes, "+pieChartLabel[1]+ " has got "+totalVotesOfEachParty[1]+ " votes and "+ pieChartLabel[2]+" party has got "+totalVotesOfEachParty[2]+ " votes in national elections of Bangladesh till 2009" +"</b>" 
+
+            document.getElementById("showHorizontalBarChart").innerHTML = "<b>" + "This horizontal bar chart represents the total votes of each party's as runner up in different constituency. <br>"+
+            "For example, "+pieChartLabel[1]+" party has got "+ pie_chart_runnerup_votes[1]+ " votes as runner up in all national elections of Bangladesh." +"</b>"
+
+
+            $(function () {
+                "use strict";
+
+
+                // Bar chart
+                new Chart(document.getElementById("chart2"), {
+                    type: 'bar',
+                    data: {
+                        labels: bar_chart_label,
+                        datasets: [{
+                            label: "Total Votes (Winners)",
+                            backgroundColor: ['#5e35b1', '#1976d2', '#388e3c', '#f57c00', '#d32f2f'],
+                            data: bar_chart_winner_votes
+                        }]
+                    },
+                    options: {
+                        legend: { display: false },
+                        title: {
+                            display: true,
+                            text: 'According to votes of winners'
+                        }
+                    }
+                });
+
+                // Pie chart
+                new Chart(document.getElementById("chart3"), {
+                    type: 'pie',
+                    data: {
+                        labels: pieChartLabel,
+                        datasets: [{
+                            label: "Total votes of each team",
+                            backgroundColor: ['#5e35b1', '#1976d2', '#388e3c', '#f57c00', '#d32f2f'],
+                            data: totalVotesOfEachParty
+                        }]
+                    },
+                    options: {
+                        title: {
+                            display: true,
+                            text: 'Total votes of each party in all elections'
+                        }
+                    }
+                });
+
+                // Horizental Bar Chart
+                new Chart(document.getElementById("chart4"), {
+                    type: 'horizontalBar',
+                    data: {
+                        labels: pieChartLabel,
+                        datasets: [{
+                            label: "Total votes ",
+                            backgroundColor: ['#5e35b1', '#1976d2', '#388e3c', '#f57c00', '#d32f2f'],
+                            data: pie_chart_runnerup_votes
+                        }]
+                    },
+                    options: {
+                        legend: { display: false },
+                        title: {
+                            display: true,
+                            text: 'Total votes of Runner up'
+                        }
+                    }
+                });
+
+                //Polar Chart
+                new Chart(document.getElementById("chart5"), {
+                    type: 'polarArea',
+                    data: {
+                        labels: ["Africa", "Asia", "Europe", "Latin America"],
+                        datasets: [{
+                            label: "Population (millions)",
+                            backgroundColor: ["#36a2eb", "#ff6384", "#4bc0c0", "#ffcd56", "#07b107"],
+                            data: [2478, 5267, 5734, 3784]
+                        }]
+                    },
+                    options: {
+                        title: {
+                            display: true,
+                            text: 'Predicted world population (millions) in 2050'
+                        }
+                    }
+                });
+
+                //Radar chart
+                new Chart(document.getElementById("chart6"), {
+                    type: 'radar',
+                    data: {
+                        labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
+                        datasets: [{
+                            label: "250",
+                            fill: true,
+                            backgroundColor: "rgba(179,181,198,0.2)",
+                            borderColor: "rgba(179,181,198,1)",
+                            pointBorderColor: "#fff",
+                            pointBackgroundColor: "rgba(179,181,198,1)",
+                            data: [8.77, 55.61, 21.69, 6.62, 6.82]
+                        }, {
+                            label: "4050",
+                            fill: true,
+                            backgroundColor: "rgba(255,99,132,0.2)",
+                            borderColor: "rgba(255,99,132,1)",
+                            pointBorderColor: "#fff",
+                            pointBackgroundColor: "rgba(255,99,132,1)",
+                            pointBorderColor: "#fff",
+                            data: [25.48, 54.16, 7.61, 8.06, 4.45]
+                        }]
+                    },
+                    options: {
+                        title: {
+                            display: true,
+                            text: 'Distribution in % of world population'
+                        }
+                    }
+                });
+
+            });
+        });
+
+    </script>
+    <script src="~/js/chartmin.js"></script>
+</environment>

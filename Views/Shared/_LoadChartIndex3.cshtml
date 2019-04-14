@@ -1,0 +1,148 @@
+@model IEnumerable<electionDbAnalytics.Models.Election>
+
+<div class="row">
+<div class="col l4"></div>
+<div class="col l4 valign center" style="font-family: 'Merienda', cursive;"> 
+        <h3 style="color: #1b5e20"><b>@ViewBag.districtValue</b></h3>
+</div>
+<div class="col l4"></div>
+</div>
+
+
+
+<div class="row">
+    <div class="col s12 m-t-10">
+    <ul class="tabs tabs-fixed-width tab-demo z-depth-1">
+
+@foreach (var item in Model.Select(m => m.Year).Distinct())
+{
+    <li class="tab"><a href="#@item">Year @Html.DisplayFor(m => item)</a></li>
+}
+</ul>
+
+@foreach (var item in Model.Select(m => m.Year).Distinct())
+{    
+    <div id="@item">
+        
+        @{int summationOfRegisteredVoters = 0; int summationOfValidVoters = 0; float voterTurnoutPercentage = 0; int counterForVoterTurnoutPercentage = 0;}
+        @foreach (var votes in Model.Where(y => y.Year == item).Select(x => x.Registered_Voters))
+        {
+            summationOfRegisteredVoters += votes;
+        }
+
+        @foreach (var votes in Model.Where(y => y.Year == item).Select(x => x.ValidVotes))
+        {
+            summationOfValidVoters += votes;
+        }
+
+        @foreach (var votes in Model.Where(y => y.Year == item).Select(x => x.Voter_TurnOut_Percentage))
+        {
+            voterTurnoutPercentage += votes;
+            counterForVoterTurnoutPercentage++;
+        }        
+
+        @{float averageOfVoterTurnoutPercentage = voterTurnoutPercentage / counterForVoterTurnoutPercentage;}
+        @{int totalNumberOfSeats = Model.Where(y => y.Year == item).Count();}
+    
+        <div class="row">
+                    <div class="col l3 m6">
+                        <div class="card">
+                            <div class="card-content center-align">
+                                <div>
+                                    <span class="green-text display-6"><i class="medium material-icons" >bookmark_border</i></span>
+                                </div>
+                                <div class="">
+                                    <h4>@totalNumberOfSeats</h4>
+                                    <h6 class="green-text font-medium m-b-0">Total Number of Seats</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col l3 m6">
+                        <div class="card">
+                            <div class="card-content center-align">
+                                <div>
+                                    <span class="black-text display-6"><i class="medium material-icons" >accessibility</i></span>
+                                </div>
+                                <div>
+                                    <h4>@summationOfRegisteredVoters</h4>
+                                    <h6 class="black-text font-medium m-b-0">Total Registered Voters</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col l3 m6">
+                        <div class="card">
+                            <div class="card-content center-align">
+                                <div>
+                                    <span class="blue-text display-6"><i class="medium material-icons" >account_circle</i></span>
+                                </div>
+                                <div>
+                                    <h4>@summationOfValidVoters</h4>
+                                    <h6 class="blue-text font-medium m-b-0">Valid Votes</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col l3 m6">
+                        <div class="card">
+                            <div class="card-content center-align">
+                                <div>
+                                    <span class="cyan-text display-6"><i class="medium material-icons" >equalizer</i></span>
+                                </div>
+                                <div>
+                                    <h4>@averageOfVoterTurnoutPercentage %</h4>
+                                    <h6 class="cyan-text font-medium m-b-0">Average Voter Turnout</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+
+<div class="card">
+    <div class="card-content">
+        <div class="align-items-center">
+
+
+            <div class="table-responsive m-b-20">
+                <table class="">
+                    <thead>
+                        <tr style="font-weight: bold; color: black">
+                            <th>Constituency Name</th>
+                            <th>Winner</th>
+                            <th>Obtained Votes</th>
+                            <th>Runner Up</th>
+                            <th>Obtained Votes</th>
+                        </tr>
+                    </thead>
+                        <tbody>
+                            @foreach (var constituencyItem in Model.Where(y => y.Year == item).OrderBy(c => c.Constituency_Number))
+                            {
+                                <tr>
+                                    <td class="grey-text text-darken-4">
+                                        @Html.DisplayFor(modelItem => constituencyItem.Constituency)
+                                    </td>
+                                    <td class="green-text text-accent-4">
+                                        @Html.DisplayFor(modelItem => constituencyItem.Winner)
+                                    </td>
+                                    <td class="grey-text text-darken-4">
+                                        @Html.DisplayFor(modelItem => constituencyItem.WinnerVotes)
+                                    </td>
+                                    <td class="orange-text text-darken-2">
+                                        @Html.DisplayFor(modelItem => constituencyItem.RunnerUp)
+                                    </td>
+                                    <td class="grey-text text-darken-4">
+                                        @Html.DisplayFor(modelItem => constituencyItem.RunnerUpVotes)
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+    </div>    
+}
+</div>
+</div>

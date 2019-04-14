@@ -1,0 +1,109 @@
+@model electionDbAnalytics.Models.Election
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Election</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ID" />
+            <div class="form-group">
+                <label asp-for="Year" class="control-label"></label>
+                <input asp-for="Year" class="form-control" />
+                <span asp-validation-for="Year" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Constituency_Number" class="control-label"></label>
+                <input asp-for="Constituency_Number" class="form-control" />
+                <span asp-validation-for="Constituency_Number" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="District" class="control-label"></label>
+                <input asp-for="District" class="form-control" />
+                <span asp-validation-for="District" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Constituency" class="control-label"></label>
+                <input asp-for="Constituency" class="form-control" />
+                <span asp-validation-for="Constituency" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Latitude" class="control-label"></label>
+                <input asp-for="Latitude" class="form-control" />
+                <span asp-validation-for="Latitude" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Longitude" class="control-label"></label>
+                <input asp-for="Longitude" class="form-control" />
+                <span asp-validation-for="Longitude" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Registered_Voters" class="control-label"></label>
+                <input asp-for="Registered_Voters" class="form-control" />
+                <span asp-validation-for="Registered_Voters" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ValidVotes" class="control-label"></label>
+                <input asp-for="ValidVotes" class="form-control" />
+                <span asp-validation-for="ValidVotes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Voter_TurnOut_Percentage" class="control-label"></label>
+                <input asp-for="Voter_TurnOut_Percentage" class="form-control" />
+                <span asp-validation-for="Voter_TurnOut_Percentage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Winner" class="control-label"></label>
+                <input asp-for="Winner" class="form-control" />
+                <span asp-validation-for="Winner" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RunnerUp" class="control-label"></label>
+                <input asp-for="RunnerUp" class="form-control" />
+                <span asp-validation-for="RunnerUp" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WinnerVotes" class="control-label"></label>
+                <input asp-for="WinnerVotes" class="form-control" />
+                <span asp-validation-for="WinnerVotes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RunnerUpVotes" class="control-label"></label>
+                <input asp-for="RunnerUpVotes" class="form-control" />
+                <span asp-validation-for="RunnerUpVotes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MarginVotes" class="control-label"></label>
+                <input asp-for="MarginVotes" class="form-control" />
+                <span asp-validation-for="MarginVotes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MarginPercentage" class="control-label"></label>
+                <input asp-for="MarginPercentage" class="form-control" />
+                <span asp-validation-for="MarginPercentage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Magnitude" class="control-label"></label>
+                <input asp-for="Magnitude" class="form-control" />
+                <span asp-validation-for="Magnitude" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
