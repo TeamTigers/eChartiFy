@@ -52,27 +52,10 @@ Application started. Press Ctrl+C to shut down.
 
 ### Screenshots
 
-<table>
-    <tr>
-        <td align="center">
-        <p align="center">
-        <img src="https://github.com/TeamTigers-IT/eChartiFy/blob/master/wwwroot/img/screenshots/combined.png" width="600" />
-        </p>
-        </td>
-    </tr>
-    <tr>
-        <td align="center">
-        <p align="center">
-        <img src="https://github.com/TeamTigers-IT/eChartiFy/blob/master/wwwroot/img/screenshots/districtWise.png" width="600" />
-        </p>
-        </td>
-  </tr>
-  <tr>
-        <td align="center">
-        <p align="center">
-        <img src="https://github.com/TeamTigers-IT/eChartiFy/blob/master/wwwroot/img/screenshots/yearly.png" width="600" />
-        </p>
-        </td>
-  </tr>
+<p align="center"><img src="https://github.com/TeamTigers-IT/eChartiFy/blob/master/wwwroot/img/screenshots/yearly.png" width="600" /></p>
 
-</table>
+<p align="center"><img src="https://github.com/TeamTigers-IT/eChartiFy/blob/master/wwwroot/img/screenshots/combined.png" width="600" /></p>
+        
+ <p align="center"><img src="https://github.com/TeamTigers-IT/eChartiFy/blob/master/wwwroot/img/screenshots/districtWise.png" width="600" /></p>
+        
+
