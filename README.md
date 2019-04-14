@@ -1,6 +1,7 @@
 # eChartiFy
-
 [![Build status](https://ci.appveyor.com/api/projects/status/c2oil2sqns671djd?svg=true)](https://ci.appveyor.com/project/shunjid/echartify)
+
+
 **eChartiFy** is web application built with .net core 2.2 that has come with the idea of reading a data-set of Bangladesh (National Elections Data-set) in a fastest possible time and then representing the data-set with different statistical charts. **Overview**:
 
   - An authorized person will be uploading the election dataset (.xlsx) into the system 
