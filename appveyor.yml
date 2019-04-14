@@ -1,0 +1,7 @@
+build: 
+  project: electionDbAnalytics.sln 
+
+image: Visual Studio 2017 
+
+before_build: 
+  - nuget restore
