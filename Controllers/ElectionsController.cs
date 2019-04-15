@@ -53,7 +53,7 @@ namespace electionDbAnalytics.Controllers
                 return View(await _context.Elections.Where(m => m.Year == yearOrDistrict).ToListAsync());
             }
             else{
-                ViewBag.message = "Index3";
+                ViewBag.message = "Index2";
                 ViewBag.districtValue = yearOrDistrict;
                 return View(await _context.Elections.Where(m => m.District == yearOrDistrict).ToListAsync());
             }
