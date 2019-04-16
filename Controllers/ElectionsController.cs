@@ -23,17 +23,15 @@ namespace electionDbAnalytics.Controllers
         private readonly ApplicationDbContext _context;
         private readonly IHostingEnvironment _hostingEnvironment;
 
-
         public ElectionsController(ApplicationDbContext context, IHostingEnvironment environment)
         {
             _context = context;
             _hostingEnvironment = environment;
         }
 
-        
-
         public async Task<IActionResult> Index()
         {
+            // Return a message "Index0", To load _LoadChartIndex0 in /Elections
             ViewBag.message = "Index0";
             return View(await _context.Elections.ToListAsync());
         }
@@ -47,6 +45,8 @@ namespace electionDbAnalytics.Controllers
             {
                 return NotFound();
             }
+            
+            // If yearOrDistrict is a int, assume this is a year; else a district
             if(Regex.IsMatch(yearOrDistrict, @"^\d+$")){
                 ViewBag.message = "Index1";
                 ViewBag.electionYear = yearOrDistrict;
