@@ -12,7 +12,8 @@
                 </div>
             </div>
         </div>
-
+        
+        <!-- Report On Pie Chart -->
         <div class="col s4">
            <div class="">
                 <div class="card">
@@ -29,10 +30,7 @@
         </div>
 
 
-
-
-        <!-- bar chart-->
-
+        <!-- Vertical Bar chart-->
         <div class="row">
            
          <div class="col s12 l8">
@@ -45,7 +43,8 @@
                 </div>
             </div>
         </div>
-
+        
+        <!-- Report On Vertical Bar Chart -->
         <div class="col s4">
            <div class="">
                 <div class="card">
@@ -59,12 +58,10 @@
                 </div>
             </div>
         </div>
-
         </div>
 
 
-        <!-- column -->
-        <!-- column -->
+        <!-- Horizontal Bar Chart -->
         <div class="row">
             <div class="col s12 l8">
             <div class="card">
@@ -76,6 +73,8 @@
                 </div>
             </div>
         </div>
+       
+       <!-- Report On Horizontal Bar Chart -->
        <div class="col s4">
            <div class="">
                 <div class="card">
@@ -90,14 +89,16 @@
             </div>
         </div>
         </div>
-        <!-- column -->
-        <!-- column -->
+        <!-- End Of Horizontal Bar Chart -->
     </div>
 </div>
 
 
 <environment exclude="Development">
         <script>
+        // variable #data contains all the information coming from /Election/Index in JSON format
+        // all the data are listed column wise in variables #year, #district ...
+        
         var data = @Html.Raw(Json.Serialize(Model));
             keys = ['year', 'constituency_Number', 'district', 'constituency', 'latitude', 'longitude', 'registered_Voters', 'validVotes', 'voter_TurnOut_Percentage', 'winner', 'runnerUp', 'winnerVotes', 'runnerUpVotes', 'marginVotes', 'marginPercentage', 'magnitude' ],
                 collection = data.reduce((r, o) => {
