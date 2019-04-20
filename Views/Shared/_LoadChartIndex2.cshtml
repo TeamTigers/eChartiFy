@@ -8,8 +8,7 @@
 <div class="col l4"></div>
 </div>
 
-
-
+<!-- Dynamic Tabs -->
 <div class="row">
     <div class="col s12 m-t-10">
     <ul class="tabs tabs-fixed-width tab-demo z-depth-1">
@@ -44,6 +43,8 @@
         @{float averageOfVoterTurnoutPercentage = voterTurnoutPercentage / counterForVoterTurnoutPercentage;}
         @{int totalNumberOfSeats = Model.Where(y => y.Year == item).Count();}
     
+        
+        <!-- Cards for statistical report -->
         <div class="row">
                     <div class="col l3 m6">
                         <div class="card">
@@ -99,6 +100,8 @@
                     </div>
             </div>
 
+
+<!-- Dynamic Tables For Listing Winners and Runner Ups By YEAR -->
 <div class="card">
     <div class="card-content">
         <div class="align-items-center">
