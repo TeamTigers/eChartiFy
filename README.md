@@ -1,5 +1,6 @@
 # eChartiFy
 [![Build status](https://ci.appveyor.com/api/projects/status/c2oil2sqns671djd?svg=true)](https://ci.appveyor.com/project/shunjid/echartify)
+
 [![forthebadge made-with-c#](https://forthebadge.com/images/badges/made-with-c-sharp.svg)](https://dotnet.microsoft.com/download)
 
 
@@ -55,7 +56,7 @@ Application started. Press Ctrl+C to shut down.
 
 ### Screenshots
 
-HomePage             |  Class Routine Preview             |  Class Routine Preview
+Yearly Election Results             |  All Election Results             |  District Wise Election Results
 :-------------------------:|:-------------------------:|:-------------------------:
 ![](https://github.com/TeamTigers-IT/eChartiFy/blob/master/wwwroot/img/screenshots/yearly.png)  |  ![](https://github.com/TeamTigers-IT/eChartiFy/blob/master/wwwroot/img/screenshots/combined.png)  |  ![](https://github.com/TeamTigers-IT/eChartiFy/blob/master/wwwroot/img/screenshots/districtWise.png)
 
