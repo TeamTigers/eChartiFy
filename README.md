@@ -55,10 +55,10 @@ Application started. Press Ctrl+C to shut down.
 
 ### Screenshots
 
-<p align="center"><img src="https://github.com/TeamTigers-IT/eChartiFy/blob/master/wwwroot/img/screenshots/yearly.png" width="600" /></p>
+HomePage             |  Class Routine Preview             |  Class Routine Preview
+:-------------------------:|:-------------------------:|:-------------------------:
+![](https://github.com/TeamTigers-IT/eChartiFy/blob/master/wwwroot/img/screenshots/yearly.png)  |  ![](https://github.com/TeamTigers-IT/eChartiFy/blob/master/wwwroot/img/screenshots/combined.png)  |  ![](https://github.com/TeamTigers-IT/eChartiFy/blob/master/wwwroot/img/screenshots/districtWise.png)
 
-<p align="center"><img src="https://github.com/TeamTigers-IT/eChartiFy/blob/master/wwwroot/img/screenshots/combined.png" width="600" /></p>
-        
- <p align="center"><img src="https://github.com/TeamTigers-IT/eChartiFy/blob/master/wwwroot/img/screenshots/districtWise.png" width="600" /></p>
+
         
 
