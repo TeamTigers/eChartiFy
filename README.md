@@ -1,5 +1,5 @@
 # eChartiFy
-[![Build status](https://ci.appveyor.com/api/projects/status/c2oil2sqns671djd?svg=true)](https://ci.appveyor.com/project/shunjid/echartify)
+[![Build status](https://ci.appveyor.com/api/projects/status/7fnwk4tdcgoxxesx?svg=true)](https://ci.appveyor.com/project/shunjid/echartify-lpo2s)
 
 [![forthebadge made-with-c#](https://forthebadge.com/images/badges/made-with-c-sharp.svg)](https://dotnet.microsoft.com/download)
 
