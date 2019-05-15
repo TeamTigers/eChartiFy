@@ -8,10 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using electionDbAnalytics.Data;
 using electionDbAnalytics.Models;
 using Microsoft.AspNetCore.Http;
-using NPOI.XSSF.UserModel;
 using System.Net.Http.Headers;
 using System.IO;
-using NPOI.SS.UserModel;
 using Microsoft.AspNetCore.Hosting;
 using System.Text.RegularExpressions;
 using Microsoft.AspNetCore.Authorization;
@@ -131,7 +129,7 @@ namespace electionDbAnalytics.Controllers
                     }
                 }
             }
-            
+
             foreach (var item in electionSet)
             {
                 if(_context.Elections.Where(m => m.Year == item.Year && m.Constituency == item.Constituency).Count() == 0){

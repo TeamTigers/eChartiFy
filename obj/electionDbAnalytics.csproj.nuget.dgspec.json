@@ -39,14 +39,6 @@
       "frameworks": {
         "netcoreapp2.2": {
           "dependencies": {
-            "DotNetCore.NPOI": {
-              "target": "Package",
-              "version": "[1.2.1, )"
-            },
-            "DotNetCore.NPOI.Core": {
-              "target": "Package",
-              "version": "[1.2.1, )"
-            },
             "EPPlus.Core": {
               "target": "Package",
               "version": "[1.5.4, )"
