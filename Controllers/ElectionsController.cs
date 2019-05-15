@@ -15,6 +15,7 @@ using NPOI.SS.UserModel;
 using Microsoft.AspNetCore.Hosting;
 using System.Text.RegularExpressions;
 using Microsoft.AspNetCore.Authorization;
+using OfficeOpenXml;
 
 namespace electionDbAnalytics.Controllers
 {
@@ -40,19 +41,21 @@ namespace electionDbAnalytics.Controllers
         [HttpGet("Elections/{yearOrDistrict}")]
         public async Task<IActionResult> Index(string yearOrDistrict)
         {
-            
+
             if (yearOrDistrict == null)
             {
                 return NotFound();
             }
-            
+
             // If yearOrDistrict is a int, assume this is a year; else a district
-            if(Regex.IsMatch(yearOrDistrict, @"^\d+$")){
+            if (Regex.IsMatch(yearOrDistrict, @"^\d+$"))
+            {
                 ViewBag.message = "Index1";
                 ViewBag.electionYear = yearOrDistrict;
                 return View(await _context.Elections.Where(m => m.Year == yearOrDistrict).ToListAsync());
             }
-            else{
+            else
+            {
                 ViewBag.message = "Index2";
                 ViewBag.districtValue = yearOrDistrict;
                 return View(await _context.Elections.Where(m => m.District == yearOrDistrict).ToListAsync());
@@ -87,126 +90,57 @@ namespace electionDbAnalytics.Controllers
         // POST: Elections/Post
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Post(IFormFile files)
         {
-            XSSFWorkbook workbook;
-            IRow rowData;
             HashSet<Election> electionSet = new HashSet<Election>();
-            string streamFilePath = null;
 
-            streamFilePath = Path.GetFullPath(ContentDispositionHeaderValue.Parse(files.ContentDisposition).FileName.Trim('"'));
-            using (var stream = new FileStream(streamFilePath, FileMode.OpenOrCreate))
+            using (var memoryStream = new MemoryStream())
             {
-                await files.CopyToAsync(stream);
-                workbook = new XSSFWorkbook(streamFilePath);
-                ISheet sheet = workbook.GetSheet("Sheet1");
-
-                for (int row = 1; row <= sheet.LastRowNum; row++)
+                await files.CopyToAsync(memoryStream).ConfigureAwait(false);
+                using (var package = new ExcelPackage(memoryStream))
                 {
-                    rowData = sheet.GetRow(row);
-                    if((_context.Elections.Count(m => m.Year == rowData.GetCell(0).ToString()) >0))
-                    { return RedirectToAction(nameof(Index)); }
-                    
-                    electionSet.Add(new Election
-                    {
-                        Year = rowData.GetCell(0).ToString(),
-                        Constituency_Number = rowData.GetCell(1).ToString(),
-                        District = rowData.GetCell(2).ToString(),
-                        Constituency = rowData.GetCell(3).ToString(),
-                        Latitude = float.Parse(rowData.GetCell(4).ToString()),
-                        Longitude = float.Parse(rowData.GetCell(5).ToString()),
-                        Registered_Voters = int.Parse(rowData.GetCell(6).ToString()),
-                        ValidVotes = int.Parse(rowData.GetCell(7).ToString()),
-                        Voter_TurnOut_Percentage = float.Parse(rowData.GetCell(8).ToString()),
-                        Winner = rowData.GetCell(9).ToString(),
-                        RunnerUp = rowData.GetCell(10).ToString(),
-                        WinnerVotes = int.Parse(rowData.GetCell(11).ToString()),
-                        RunnerUpVotes = int.Parse(rowData.GetCell(12).ToString()),
-                        MarginVotes = int.Parse(rowData.GetCell(13).ToString()),
-                        MarginPercentage = float.Parse(rowData.GetCell(14).ToString()),
-                        Magnitude = int.Parse(rowData.GetCell(15).ToString())
-                    });
-                }
-                stream.Dispose();
-            }
+                    var workSheet = package.Workbook.Worksheets.First();
+                    var rowCount = workSheet.Dimension?.Rows;
+                    var colCount = workSheet.Dimension?.Columns;
 
+
+                    for (int row = 2; row <= rowCount.Value; row++)
+                    {
+                        electionSet.Add(new Election
+                        {
+                            Year = workSheet.Cells[row, 1].Text,
+                            Constituency_Number = workSheet.Cells[row, 2].Text,
+                            District = workSheet.Cells[row, 3].Text,
+                            Constituency = workSheet.Cells[row, 4].Text,
+                            Latitude = float.Parse(workSheet.Cells[row, 5].Text),
+                            Longitude = float.Parse(workSheet.Cells[row, 6].Text),
+                            Registered_Voters = int.Parse(workSheet.Cells[row, 7].Text),
+                            ValidVotes = int.Parse(workSheet.Cells[row, 8].Text),
+                            Voter_TurnOut_Percentage = float.Parse(workSheet.Cells[row, 9].Text),
+                            Winner = workSheet.Cells[row, 10].Text,
+                            RunnerUp = workSheet.Cells[row, 11].Text,
+                            WinnerVotes = int.Parse(workSheet.Cells[row, 12].Text),
+                            RunnerUpVotes = int.Parse(workSheet.Cells[row, 13].Text),
+                            MarginVotes = int.Parse(workSheet.Cells[row, 14].Text),
+                            MarginPercentage = float.Parse(workSheet.Cells[row, 15].Text),
+                            Magnitude = int.Parse(workSheet.Cells[row, 16].Text)
+                        });
+                    }
+                }
+            }
+            
             foreach (var item in electionSet)
             {
-                _context.Add(item);
+                if(_context.Elections.Where(m => m.Year == item.Year && m.Constituency == item.Constituency).Count() == 0){
+                    _context.Add(item);
+                }
             }
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-
-
-        /* In Windows Server 
-         *
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Post(List<IFormFile> files)
-        {
-            XSSFWorkbook workbook;
-            var tempFilePath = Path.GetTempFileName();
-            IRow rowData;
-            HashSet<Election> electionSet = new HashSet<Election>();
-            string streamFilePath = null;
-
-            foreach (var formFile in files)
-            {
-                if (formFile.Length > 0)
-                {
-                    streamFilePath = Path.GetFullPath(ContentDispositionHeaderValue.Parse(formFile.ContentDisposition).FileName.Trim('"'));
-                    using (var stream = new FileStream(tempFilePath, FileMode.Create))
-                    {
-                        await formFile.CopyToAsync(stream);
-                        
-                        workbook = new XSSFWorkbook(streamFilePath);
-
-                        ISheet sheet = workbook.GetSheet("Sheet1");
-                        
-                        for (int row = 1; row <= sheet.LastRowNum; row++)
-                        {
-                            rowData = sheet.GetRow(row);
-                            if ((_context.Elections.Count(m => m.Year == rowData.GetCell(0).ToString()) > 0))
-                            { return RedirectToAction(nameof(Index)); }
-
-                            electionSet.Add(new Election
-                            {
-                                Year = rowData.GetCell(0).ToString(),
-                                Constituency_Number = rowData.GetCell(1).ToString(),
-                                District = rowData.GetCell(2).ToString(),
-                                Constituency = rowData.GetCell(3).ToString(),
-                                Latitude = float.Parse(rowData.GetCell(4).ToString()),
-                                Longitude = float.Parse(rowData.GetCell(5).ToString()),
-                                Registered_Voters = int.Parse(rowData.GetCell(6).ToString()),
-                                ValidVotes = int.Parse(rowData.GetCell(7).ToString()),
-                                Voter_TurnOut_Percentage = float.Parse(rowData.GetCell(8).ToString()),
-                                Winner = rowData.GetCell(9).ToString(),
-                                RunnerUp = rowData.GetCell(10).ToString(),
-                                WinnerVotes = int.Parse(rowData.GetCell(11).ToString()),
-                                RunnerUpVotes = int.Parse(rowData.GetCell(12).ToString()),
-                                MarginVotes = int.Parse(rowData.GetCell(13).ToString()),
-                                MarginPercentage = float.Parse(rowData.GetCell(14).ToString()),
-                                Magnitude = int.Parse(rowData.GetCell(15).ToString())
-                            });
-                        }
-                    }
-                }
-            }
-
-            foreach (var item in electionSet)
-            {
-                _context.Add(item);
-            }
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Create));
-        }
-
-        */
-
 
         // GET: Elections/Edit/5
         public async Task<IActionResult> Edit(int? id)
