@@ -32,6 +32,7 @@ $ sudo apt-get install dotnet-sdk-2.2
 
 Now move onto project folder and run this commands to build the project:
 ```sh
+$ git clone https://github.com/TeamTigers/eChartiFy.git
 $ cd eChartiFy
 $ dotnet restore
 $ dotnet run
