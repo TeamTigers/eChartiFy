@@ -14,6 +14,8 @@ using Microsoft.AspNetCore.Hosting;
 using System.Text.RegularExpressions;
 using Microsoft.AspNetCore.Authorization;
 using OfficeOpenXml;
+using System.Net.Http;
+using Newtonsoft.Json.Linq;
 
 namespace electionDbAnalytics.Controllers
 {
@@ -22,14 +24,28 @@ namespace electionDbAnalytics.Controllers
         private readonly ApplicationDbContext _context;
         private readonly IHostingEnvironment _hostingEnvironment;
 
-        public ElectionsController(ApplicationDbContext context, IHostingEnvironment environment)
+        public ElectionsController(ApplicationDbContext context)
         {
             _context = context;
-            _hostingEnvironment = environment;
+        }
+
+        private JObject getClientInformation(){
+            HttpClient http = new HttpClient();
+            var data = http.GetAsync("https://geoip-db.com/json/").Result.Content.ReadAsStringAsync().Result;
+            JObject objectData = JObject.Parse(data);
+            return objectData;
         }
 
         public async Task<IActionResult> Index()
         {
+            JObject clientInfo = getClientInformation();
+            AuditLogging audit = new AuditLogging();
+            audit.IPAddress = (string)clientInfo["IPv4"];
+            audit.Location = (string)clientInfo["latitude"] + "," + (string)clientInfo["longitude"] + "," + (string)clientInfo["city"];
+            audit.TimeOfAction = DateTime.Now;
+            _context.Add(audit);
+            await _context.SaveChangesAsync();
+            
             // Return a message "Index0", To load _LoadChartIndex0 in /Elections
             ViewBag.message = "Index0";
             return View(await _context.Elections.ToListAsync());
@@ -39,6 +55,13 @@ namespace electionDbAnalytics.Controllers
         [HttpGet("Elections/{yearOrDistrict}")]
         public async Task<IActionResult> Index(string yearOrDistrict)
         {
+            JObject clientInfo = getClientInformation();
+            AuditLogging audit = new AuditLogging();
+            audit.IPAddress = (string)clientInfo["IPv4"];
+            audit.Location = (string)clientInfo["latitude"] + "," + (string)clientInfo["longitude"] + "," + (string)clientInfo["city"];
+            audit.TimeOfAction = DateTime.Now;
+            _context.Add(audit);
+            await _context.SaveChangesAsync();
 
             if (yearOrDistrict == null)
             {
@@ -93,6 +116,13 @@ namespace electionDbAnalytics.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Post(IFormFile files)
         {
+            JObject clientInfo = getClientInformation();
+            AuditLogging audit = new AuditLogging();
+            audit.IPAddress = (string)clientInfo["IPv4"];
+            audit.Location = (string)clientInfo["latitude"] + "," + (string)clientInfo["longitude"] + "," + (string)clientInfo["city"];
+            audit.TimeOfAction = DateTime.Now;
+            _context.Add(audit);
+
             HashSet<Election> electionSet = new HashSet<Election>();
 
             using (var memoryStream = new MemoryStream())

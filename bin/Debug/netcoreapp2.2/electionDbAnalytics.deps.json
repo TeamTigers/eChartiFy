@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.2",
-    "signature": "2b4cb1c06e3e625361abff0e38f4ea5d9eb54ce8"
+    "signature": "a183a374970078efdb38de033540cbfe77518f5b"
   },
   "compilationOptions": {
     "defines": [
@@ -24,80 +24,19 @@
     ".NETCoreApp,Version=v2.2": {
       "electionDbAnalytics/1.0.0": {
         "dependencies": {
-          "DotNetCore.NPOI": "1.2.1",
-          "DotNetCore.NPOI.Core": "1.2.1",
           "EPPlus.Core": "1.5.4",
           "Microsoft.AspNetCore.App": "2.2.0",
           "Microsoft.AspNetCore.Razor.Design": "2.2.0",
           "Microsoft.EntityFrameworkCore.Sqlite": "2.2.3",
           "Microsoft.NETCore.App": "2.2.0",
-          "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.2.3"
+          "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.2.3",
+          "Newtonsoft.Json": "12.0.2"
         },
         "runtime": {
           "electionDbAnalytics.dll": {}
         },
         "compile": {
           "electionDbAnalytics.dll": {}
-        }
-      },
-      "DotNetCore.NPOI/1.2.1": {
-        "dependencies": {
-          "DotNetCore.NPOI.Core": "1.2.1",
-          "DotNetCore.NPOI.OpenXml4Net": "1.2.1",
-          "DotNetCore.NPOI.OpenXmlFormats": "1.2.1"
-        },
-        "runtime": {
-          "lib/netstandard2.0/NPOI.OOXML.dll": {
-            "assemblyVersion": "1.2.1.0",
-            "fileVersion": "1.2.1.0"
-          }
-        },
-        "compile": {
-          "lib/netstandard2.0/NPOI.OOXML.dll": {}
-        }
-      },
-      "DotNetCore.NPOI.Core/1.2.1": {
-        "dependencies": {
-          "SharpZipLib": "1.0.0",
-          "System.Drawing.Common": "4.5.0",
-          "System.Text.Encoding.CodePages": "4.5.0"
-        },
-        "runtime": {
-          "lib/netstandard2.0/NPOI.dll": {
-            "assemblyVersion": "1.2.1.0",
-            "fileVersion": "1.2.1.0"
-          }
-        },
-        "compile": {
-          "lib/netstandard2.0/NPOI.dll": {}
-        }
-      },
-      "DotNetCore.NPOI.OpenXml4Net/1.2.1": {
-        "dependencies": {
-          "DotNetCore.NPOI.Core": "1.2.1"
-        },
-        "runtime": {
-          "lib/netstandard2.0/NPOI.OpenXml4Net.dll": {
-            "assemblyVersion": "1.2.1.0",
-            "fileVersion": "1.2.1.0"
-          }
-        },
-        "compile": {
-          "lib/netstandard2.0/NPOI.OpenXml4Net.dll": {}
-        }
-      },
-      "DotNetCore.NPOI.OpenXmlFormats/1.2.1": {
-        "dependencies": {
-          "DotNetCore.NPOI.OpenXml4Net": "1.2.1"
-        },
-        "runtime": {
-          "lib/netstandard2.0/NPOI.OpenXmlFormats.dll": {
-            "assemblyVersion": "1.2.1.0",
-            "fileVersion": "1.2.1.0"
-          }
-        },
-        "compile": {
-          "lib/netstandard2.0/NPOI.OpenXmlFormats.dll": {}
         }
       },
       "EPPlus.Core/1.5.4": {
@@ -105,7 +44,7 @@
           "System.Collections.NonGeneric": "4.3.0",
           "System.Data.Common": "4.3.0",
           "System.Data.SqlClient": "4.6.0",
-          "System.Drawing.Common": "4.5.0",
+          "System.Drawing.Common": "4.5.0-preview1-25914-04",
           "System.Reflection": "4.3.0",
           "System.Security.Claims": "4.3.0",
           "System.Security.Cryptography.Pkcs": "4.5.0",
@@ -263,7 +202,7 @@
       },
       "Microsoft.VisualStudio.Web.CodeGeneration.Contracts/2.2.3": {
         "dependencies": {
-          "Newtonsoft.Json": "11.0.2"
+          "Newtonsoft.Json": "12.0.2"
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.VisualStudio.Web.CodeGeneration.Contracts.dll": {
@@ -279,7 +218,7 @@
         "dependencies": {
           "Microsoft.Extensions.DependencyInjection": "2.2.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Templating": "2.2.3",
-          "Newtonsoft.Json": "11.0.2"
+          "Newtonsoft.Json": "12.0.2"
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.VisualStudio.Web.CodeGeneration.Core.dll": {
@@ -339,7 +278,7 @@
         "dependencies": {
           "Microsoft.CodeAnalysis.CSharp.Workspaces": "2.8.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Contracts": "2.2.3",
-          "Newtonsoft.Json": "11.0.2",
+          "Newtonsoft.Json": "12.0.2",
           "NuGet.Frameworks": "4.7.0"
         },
         "runtime": {
@@ -366,23 +305,15 @@
           "lib/netstandard2.0/Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll": {}
         }
       },
-      "Microsoft.Win32.SystemEvents/4.5.0": {
-        "dependencies": {
-          "Microsoft.NETCore.Platforms": "2.2.0"
-        },
+      "Newtonsoft.Json/12.0.2": {
         "runtime": {
-          "lib/netstandard2.0/Microsoft.Win32.SystemEvents.dll": {
-            "assemblyVersion": "4.0.0.0",
-            "fileVersion": "4.6.26515.6"
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {
+            "assemblyVersion": "12.0.0.0",
+            "fileVersion": "12.0.2.23222"
           }
         },
-        "runtimeTargets": {
-          "runtimes/win/lib/netcoreapp2.0/Microsoft.Win32.SystemEvents.dll": {
-            "rid": "win",
-            "assetType": "runtime",
-            "assemblyVersion": "4.0.0.0",
-            "fileVersion": "4.6.26515.6"
-          }
+        "compile": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
         }
       },
       "NuGet.Frameworks/4.7.0": {
@@ -421,17 +352,6 @@
         },
         "compile": {
           "lib/netstandard1.0/Remotion.Linq.dll": {}
-        }
-      },
-      "SharpZipLib/1.0.0": {
-        "runtime": {
-          "lib/netstandard2.0/ICSharpCode.SharpZipLib.dll": {
-            "assemblyVersion": "1.0.0.999",
-            "fileVersion": "1.0.0.999"
-          }
-        },
-        "compile": {
-          "lib/netstandard2.0/ICSharpCode.SharpZipLib.dll": {}
         }
       },
       "SQLitePCLRaw.bundle_green/1.1.12": {
@@ -689,15 +609,14 @@
           "System.Threading.Tasks": "4.3.0"
         }
       },
-      "System.Drawing.Common/4.5.0": {
+      "System.Drawing.Common/4.5.0-preview1-25914-04": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "2.2.0",
-          "Microsoft.Win32.SystemEvents": "4.5.0"
+          "Microsoft.NETCore.Platforms": "2.2.0"
         },
         "runtime": {
           "lib/netstandard2.0/System.Drawing.Common.dll": {
             "assemblyVersion": "4.0.0.0",
-            "fileVersion": "4.6.26515.6"
+            "fileVersion": "4.6.25914.4"
           }
         },
         "runtimeTargets": {
@@ -705,13 +624,13 @@
             "rid": "unix",
             "assetType": "runtime",
             "assemblyVersion": "4.0.0.0",
-            "fileVersion": "4.6.26515.6"
+            "fileVersion": "4.6.25914.4"
           },
           "runtimes/win/lib/netcoreapp2.0/System.Drawing.Common.dll": {
             "rid": "win",
             "assetType": "runtime",
             "assemblyVersion": "4.0.0.0",
-            "fileVersion": "4.6.26515.6"
+            "fileVersion": "4.6.25914.4"
           }
         },
         "compile": {
@@ -786,7 +705,7 @@
       },
       "Microsoft.AspNet.WebApi.Client/5.2.6": {
         "dependencies": {
-          "Newtonsoft.Json": "11.0.2",
+          "Newtonsoft.Json": "12.0.2",
           "Newtonsoft.Json.Bson": "1.0.1"
         },
         "compile": {
@@ -1074,7 +993,7 @@
       "Microsoft.AspNetCore.Authentication.OAuth/2.2.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Authentication": "2.2.0",
-          "Newtonsoft.Json": "11.0.2"
+          "Newtonsoft.Json": "12.0.2"
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.AspNetCore.Authentication.OAuth.dll": {}
@@ -1352,7 +1271,7 @@
           "Microsoft.AspNetCore.Http.Connections.Common": "1.1.0",
           "Microsoft.AspNetCore.Routing": "2.2.0",
           "Microsoft.AspNetCore.WebSockets": "2.2.0",
-          "Newtonsoft.Json": "11.0.2",
+          "Newtonsoft.Json": "12.0.2",
           "System.Security.Principal.Windows": "4.5.0"
         },
         "compile": {
@@ -1363,7 +1282,7 @@
       "Microsoft.AspNetCore.Http.Connections.Common/1.1.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Connections.Abstractions": "2.2.0",
-          "Newtonsoft.Json": "11.0.2",
+          "Newtonsoft.Json": "12.0.2",
           "System.Buffers": "4.5.0"
         },
         "compile": {
@@ -1457,7 +1376,7 @@
       "Microsoft.AspNetCore.JsonPatch/2.2.0": {
         "dependencies": {
           "Microsoft.CSharp": "4.5.0",
-          "Newtonsoft.Json": "11.0.2"
+          "Newtonsoft.Json": "12.0.2"
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.AspNetCore.JsonPatch.dll": {}
@@ -1690,7 +1609,7 @@
         "dependencies": {
           "Microsoft.AspNetCore.Hosting.Abstractions": "2.2.0",
           "Microsoft.Extensions.Logging.Console": "2.2.0",
-          "Newtonsoft.Json": "11.0.2"
+          "Newtonsoft.Json": "12.0.2"
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.AspNetCore.NodeServices.dll": {}
@@ -1940,7 +1859,7 @@
         "dependencies": {
           "Microsoft.AspNetCore.Connections.Abstractions": "2.2.0",
           "Microsoft.Extensions.Options": "2.2.0",
-          "Newtonsoft.Json": "11.0.2",
+          "Newtonsoft.Json": "12.0.2",
           "System.Buffers": "4.5.0"
         },
         "compile": {
@@ -1966,7 +1885,7 @@
       "Microsoft.AspNetCore.SignalR.Protocols.Json/1.1.0": {
         "dependencies": {
           "Microsoft.AspNetCore.SignalR.Common": "1.1.0",
-          "Newtonsoft.Json": "11.0.2"
+          "Newtonsoft.Json": "12.0.2"
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.AspNetCore.SignalR.Protocols.Json.dll": {}
@@ -2255,7 +2174,7 @@
         "dependencies": {
           "Microsoft.Extensions.Configuration": "2.2.0",
           "Microsoft.Extensions.Configuration.FileExtensions": "2.2.0",
-          "Newtonsoft.Json": "11.0.2"
+          "Newtonsoft.Json": "12.0.2"
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.Extensions.Configuration.Json.dll": {}
@@ -2310,7 +2229,7 @@
       "Microsoft.Extensions.DependencyModel/2.1.0": {
         "dependencies": {
           "Microsoft.DotNet.PlatformAbstractions": "2.1.0",
-          "Newtonsoft.Json": "11.0.2",
+          "Newtonsoft.Json": "12.0.2",
           "System.Diagnostics.Debug": "4.3.0",
           "System.Dynamic.Runtime": "4.3.0",
           "System.Linq": "4.3.0"
@@ -2517,7 +2436,7 @@
       "Microsoft.Extensions.Logging.EventSource/2.2.0": {
         "dependencies": {
           "Microsoft.Extensions.Logging": "2.2.0",
-          "Newtonsoft.Json": "11.0.2"
+          "Newtonsoft.Json": "12.0.2"
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.Extensions.Logging.EventSource.dll": {}
@@ -2597,7 +2516,7 @@
       "Microsoft.IdentityModel.JsonWebTokens/5.3.0": {
         "dependencies": {
           "Microsoft.IdentityModel.Tokens": "5.3.0",
-          "Newtonsoft.Json": "11.0.2"
+          "Newtonsoft.Json": "12.0.2"
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.IdentityModel.JsonWebTokens.dll": {}
@@ -2632,7 +2551,7 @@
       "Microsoft.IdentityModel.Protocols.OpenIdConnect/5.3.0": {
         "dependencies": {
           "Microsoft.IdentityModel.Protocols": "5.3.0",
-          "Newtonsoft.Json": "11.0.2",
+          "Newtonsoft.Json": "12.0.2",
           "System.Dynamic.Runtime": "4.3.0",
           "System.IdentityModel.Tokens.Jwt": "5.3.0"
         },
@@ -2656,7 +2575,7 @@
       "Microsoft.IdentityModel.Tokens/5.3.0": {
         "dependencies": {
           "Microsoft.IdentityModel.Logging": "5.3.0",
-          "Newtonsoft.Json": "11.0.2",
+          "Newtonsoft.Json": "12.0.2",
           "System.Collections": "4.3.0",
           "System.Diagnostics.Tools": "4.3.0",
           "System.Reflection": "4.3.0",
@@ -2896,16 +2815,10 @@
         },
         "compileOnly": true
       },
-      "Newtonsoft.Json/11.0.2": {
-        "compile": {
-          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
-        },
-        "compileOnly": true
-      },
       "Newtonsoft.Json.Bson/1.0.1": {
         "dependencies": {
           "NETStandard.Library": "2.0.3",
-          "Newtonsoft.Json": "11.0.2"
+          "Newtonsoft.Json": "12.0.2"
         },
         "compile": {
           "lib/netstandard1.3/Newtonsoft.Json.Bson.dll": {}
@@ -3191,7 +3104,7 @@
         "dependencies": {
           "Microsoft.IdentityModel.JsonWebTokens": "5.3.0",
           "Microsoft.IdentityModel.Tokens": "5.3.0",
-          "Newtonsoft.Json": "11.0.2"
+          "Newtonsoft.Json": "12.0.2"
         },
         "compile": {
           "lib/netstandard2.0/System.IdentityModel.Tokens.Jwt.dll": {}
@@ -3915,34 +3828,6 @@
       "serviceable": false,
       "sha512": ""
     },
-    "DotNetCore.NPOI/1.2.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-2AMq9Dd3rD4pZlU3sT4EveRLzXFyw90OO5ShUh+IqBisrSssN4l0tYIrD6XEKL/J5gdlIxB/JsjKk7ieUCIW6g==",
-      "path": "dotnetcore.npoi/1.2.1",
-      "hashPath": "dotnetcore.npoi.1.2.1.nupkg.sha512"
-    },
-    "DotNetCore.NPOI.Core/1.2.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-/6t1vRqmxmvjlNolwyhfYbhQARZKiwmzx3bBoyhr3dZ/k3cod3hFxCsOwFczq4yGmFONiNFDOZBzcM+TNXL55w==",
-      "path": "dotnetcore.npoi.core/1.2.1",
-      "hashPath": "dotnetcore.npoi.core.1.2.1.nupkg.sha512"
-    },
-    "DotNetCore.NPOI.OpenXml4Net/1.2.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-KbqwRjatdEKmhzMFeRby5iHxh4DRuLu3VYqzah3RTCNfleczQjlsZwMM9DWQO1lUtdU1Q2keJm1IYAK92zfLqg==",
-      "path": "dotnetcore.npoi.openxml4net/1.2.1",
-      "hashPath": "dotnetcore.npoi.openxml4net.1.2.1.nupkg.sha512"
-    },
-    "DotNetCore.NPOI.OpenXmlFormats/1.2.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-uHynYPi/iDeQbHapCOrmTGBJRX4Il8F0qeCx3Xbqo/bo0FazY2dKGhD6CWb07ZCGe1DDgu4bmMRv/1l4/21+wQ==",
-      "path": "dotnetcore.npoi.openxmlformats/1.2.1",
-      "hashPath": "dotnetcore.npoi.openxmlformats.1.2.1.nupkg.sha512"
-    },
     "EPPlus.Core/1.5.4": {
       "type": "package",
       "serviceable": true,
@@ -4069,12 +3954,12 @@
       "path": "microsoft.visualstudio.web.codegenerators.mvc/2.2.3",
       "hashPath": "microsoft.visualstudio.web.codegenerators.mvc.2.2.3.nupkg.sha512"
     },
-    "Microsoft.Win32.SystemEvents/4.5.0": {
+    "Newtonsoft.Json/12.0.2": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-LuI1oG+24TUj1ZRQQjM5Ew73BKnZE5NZ/7eAdh1o8ST5dPhUnJvIkiIn2re3MwnkRy6ELRnvEbBxHP8uALKhJw==",
-      "path": "microsoft.win32.systemevents/4.5.0",
-      "hashPath": "microsoft.win32.systemevents.4.5.0.nupkg.sha512"
+      "sha512": "sha512-rTK0s2EKlfHsQsH6Yx2smvcTCeyoDNgCW7FEYyV01drPlh2T243PR2DiDXqtC5N4GDm4Ma/lkxfW5a/4793vbA==",
+      "path": "newtonsoft.json/12.0.2",
+      "hashPath": "newtonsoft.json.12.0.2.nupkg.sha512"
     },
     "NuGet.Frameworks/4.7.0": {
       "type": "package",
@@ -4089,13 +3974,6 @@
       "sha512": "sha512-fK/76UmpC0FXBlGDFVPLJHQlDLYnGC+XY3eoDgCgbtrhi0vzbXDQ3n/IYHhqSKqXQfGw/u04A1drWs7rFVkRjw==",
       "path": "remotion.linq/2.2.0",
       "hashPath": "remotion.linq.2.2.0.nupkg.sha512"
-    },
-    "SharpZipLib/1.0.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-YuYztmY3jEb21F6e5LIPHJjApdtzdCPQ284UzsCKNfkgW71bukFHJES6RbKi+wm053XzFg0LX5/2vj/9gl8F/g==",
-      "path": "sharpziplib/1.0.0",
-      "hashPath": "sharpziplib.1.0.0.nupkg.sha512"
     },
     "SQLitePCLRaw.bundle_green/1.1.12": {
       "type": "package",
@@ -4195,12 +4073,12 @@
       "path": "system.data.common/4.3.0",
       "hashPath": "system.data.common.4.3.0.nupkg.sha512"
     },
-    "System.Drawing.Common/4.5.0": {
+    "System.Drawing.Common/4.5.0-preview1-25914-04": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-AiJFxxVPdeITstiRS5aAu8+8Dpf5NawTMoapZ53Gfirml24p7HIfhjmCRxdXnmmf3IUA3AX3CcW7G73CjWxW/Q==",
-      "path": "system.drawing.common/4.5.0",
-      "hashPath": "system.drawing.common.4.5.0.nupkg.sha512"
+      "sha512": "sha512-xe9fRaplCuFFkqa2FNSuhZrux4ENP6b1sKxcGIqI0en4aEDMHsHQxtIwwkMsvlKDHoFlLcPkvpUefUnttajA8w==",
+      "path": "system.drawing.common/4.5.0-preview1-25914-04",
+      "hashPath": "system.drawing.common.4.5.0-preview1-25914-04.nupkg.sha512"
     },
     "System.Interactive.Async/3.2.0": {
       "type": "package",
@@ -5412,13 +5290,6 @@
       "sha512": "sha512-st47PosZSHrjECdjeIzZQbzivYBJFv6P2nv4cj2ypdI204DO+vZ7l5raGMiX4eXMJ53RfOIg+/s4DHVZ54Nu2A==",
       "path": "netstandard.library/2.0.3",
       "hashPath": "netstandard.library.2.0.3.nupkg.sha512"
-    },
-    "Newtonsoft.Json/11.0.2": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-IvJe1pj7JHEsP8B8J8DwlMEx8UInrs/x+9oVY+oCD13jpLu4JbJU2WCIsMRn5C4yW9+DgkaO8uiVE5VHKjpmdQ==",
-      "path": "newtonsoft.json/11.0.2",
-      "hashPath": "newtonsoft.json.11.0.2.nupkg.sha512"
     },
     "Newtonsoft.Json.Bson/1.0.1": {
       "type": "package",
