@@ -2799,23 +2799,8 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "Views/Audits/Create.cshtml",
-      "TargetPath": "Views/Audits/Create.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "Views/Audits/Edit.cshtml",
-      "TargetPath": "Views/Audits/Edit.cshtml",
-      "FileKind": "mvc"
-    },
-    {
       "FilePath": "Views/Elections/Delete.cshtml",
       "TargetPath": "Views/Elections/Delete.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "Views/Audits/Details.cshtml",
-      "TargetPath": "Views/Audits/Details.cshtml",
       "FileKind": "mvc"
     },
     {
