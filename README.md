@@ -49,7 +49,7 @@ Application started. Press Ctrl+C to shut down.
 **eChartiFy** uses a number of open source projects to work properly:
 
 * [.NET Core 2.2](https://dotnet.microsoft.com/learn/dotnet/hello-world-tutorial/intro) - a cross-platform version of .NET for building websites, services, and console apps!
-* [NPOI Core](https://www.nuget.org/packages/DotNetCore.NPOI/) - a library for reading and writing Microsoft Office binary and OOXML file formats.
+* [EPPlus.Core](https://www.nuget.org/packages/EPPlus.Core/#dotnet-cli/) - an unofficial port of the EPPlus library to .NET Core.
 * [Materializecss](https://materializecss.com) - a modern responsive front-end framework based on Material Design
 * [ChartJS](https://www.chartjs.org/) -  flexible JavaScript charting for designers & developers
 * [National Elections Dataset](http://www.ecs.gov.bd/page/election-results) -  National Election Results dataset provided by Election comission of the People Republic of Bangladesh and collected from this [open source](https://github.com/mbaldassaro/bangladeshelectiondata)
