@@ -1,5 +1,6 @@
 # eChartiFy
 [![Build status](https://ci.appveyor.com/api/projects/status/7fnwk4tdcgoxxesx?svg=true)](https://ci.appveyor.com/project/shunjid/echartify-lpo2s)
+<a href="https://github.com/TeamTigers/eChartiFy/blob/master/electionDbAnalytics.csproj"><img src="https://img.shields.io/badge/Core-v2.2-692079.svg?logo=.net&amp;style=flat-square" alt=".NET Core 2.2"></a>
 
 [![forthebadge made-with-c#](https://forthebadge.com/images/badges/made-with-c-sharp.svg)](https://dotnet.microsoft.com/download)
 
